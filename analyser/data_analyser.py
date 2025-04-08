@@ -5,13 +5,12 @@ class DataAnalyser:
         self.clean_data()
 
 
-    def clean_data(self):
-        for i in range(len(self.data_to_analyse)):
-            line: str = self.data_to_analyse[i]
-            line = line.replace('\n', '')
-            line = line.replace('\t', '')
-            line = line.strip()
-            self.data_to_analyse[i] = line
+    def clean_data(self, data: list) -> list:
+        cleaned_list = [
+            line.replace('\n', '').replace('\t', '').strip()
+            for line in data
+        ]
+        return cleaned_list
 
 
     def amount_of_lines(self) -> int:
