@@ -11,5 +11,6 @@ class TextFileReader:
             self.file_contents.append(line)
         file.close()
 
+
     def get_file_content(self):
         return self.file_contents
