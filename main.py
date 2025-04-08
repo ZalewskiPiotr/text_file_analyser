@@ -8,3 +8,4 @@ if __name__ == "__main__":
 
     analyser: DataAnalyser = DataAnalyser(file_reader.get_file_content())
     print(analyser.amount_of_lines())
+    print(analyser.amount_of_words())
