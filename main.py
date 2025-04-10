@@ -7,7 +7,7 @@ if __name__ == "__main__":
     file_reader.read_file()
 
     analyser: DataAnalyser = DataAnalyser(file_reader.get_file_content())
-    print(analyser.amount_of_lines())
-    print(analyser.amount_of_words())
-    print(analyser.show_five_most_frequent_words())
-    print(analyser.amount_of_letters())
+    print(f"Number of lines in a text file: {analyser.amount_of_lines()}")
+    print(f"Number of words in a text file: {analyser.amount_of_words()}")
+    print(f"Number of characters in a text file: {analyser.amount_of_letters()}")
+    print(f"The five most frequent words in a text file: {analyser.show_five_most_frequent_words()}")
