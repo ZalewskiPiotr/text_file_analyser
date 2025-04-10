@@ -44,3 +44,7 @@ class DataAnalyser:
     def sort_items(self, data: dict) -> list:
         sorted_words: list = sorted(data.items(), key = lambda item: item[1], reverse = True)
         return sorted_words[:5]
+
+
+    def amount_of_letters(self) -> int:
+        return sum(len(''.join(line.split())) for line in self.data_to_analyse)
