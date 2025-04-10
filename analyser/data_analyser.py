@@ -1,10 +1,10 @@
 class DataAnalyser:
 
     def __init__(self, data: list):
-        self.data_to_analyse: list = self.clean_data(data)
+        self.data_to_analyse: list = self._clean_data(data)
 
 
-    def clean_data(self, data: list) -> list:
+    def _clean_data(self, data: list) -> list:
         cleaned_list = [
             line.replace('\n', '').replace('\t', '').strip()
             for line in data
@@ -25,7 +25,7 @@ class DataAnalyser:
 
     def show_five_most_frequent_words(self) -> list:
         counted_words: dict = self.number_of_occurrences_of_each_word(self.data_to_analyse)
-        sorted_words: list = self.sort_items(counted_words)
+        sorted_words: list = self._sort_items(counted_words)
         return sorted_words
 
 
@@ -41,7 +41,7 @@ class DataAnalyser:
         return counted_words
 
 
-    def sort_items(self, data: dict) -> list:
+    def _sort_items(self, data: dict) -> list:
         sorted_words: list = sorted(data.items(), key = lambda item: item[1], reverse = True)
         return sorted_words[:5]
 
