@@ -10,3 +10,4 @@ if __name__ == "__main__":
     print(analyser.amount_of_lines())
     print(analyser.amount_of_words())
     print(analyser.show_five_most_frequent_words())
+    print(analyser.amount_of_letters())
