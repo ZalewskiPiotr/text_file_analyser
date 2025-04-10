@@ -25,13 +25,13 @@ class DataAnalyser:
 
 
     def show_five_most_frequent_words(self) -> list:
-        counted_words: dict = DataAnalyser.number_of_occurrences_of_each_word(self.data_to_analyse)
+        counted_words: dict = DataAnalyser._number_of_occurrences_of_each_word(self.data_to_analyse)
         sorted_words: list = DataAnalyser._sort_items(counted_words)
         return sorted_words
 
 
     @staticmethod
-    def number_of_occurrences_of_each_word(source: list) -> dict:
+    def _number_of_occurrences_of_each_word(source: list) -> dict:
         counted_words: dict = {}
         for line in source:
             words: list = line.split()
