@@ -24,10 +24,13 @@ class TextFileReader:
 
         Opens the file in read and write mode ("r+t"), reads each line and appends it to the file_contents list.
         """
-        file = open(self.file_path, "r+t")
-        for line in file:
-            self.file_contents.append(line)
-        file.close()
+        try:
+            with open(self.file_path, "r+t") as file:
+                self.file_contents = file.readlines()
+        except FileNotFoundError:
+                print(f"Error: File '{self.file_path}' not found.")
+        except IOError as e:
+            print(f"Error reading file '{self.file_path}': {e}")
 
 
     def get_file_content(self):
