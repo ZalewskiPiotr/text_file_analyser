@@ -1,3 +1,23 @@
+"""
+Main script for analyzing a text file using the DataAnalyser module.
+
+This script reads the contents of a text file, analyzes it, and prints:
+- The number of lines
+- The number of words
+- The number of characters (excluding spaces)
+- The five most frequent words
+
+Modules:
+    analyser.text_file_reader (as txt_reader): Handles file reading operations.
+    analyser.data_analyser: Provides tools for text analysis.
+
+Usage:
+    Run this script directly to analyze the file specified by `file_path`.
+
+Example:
+    $ python main.py
+"""
+
 from analyser import text_file_reader as txt_reader
 from analyser.data_analyser import DataAnalyser
 
