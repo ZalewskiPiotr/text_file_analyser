@@ -20,9 +20,13 @@ class TextFileReader:
 
     def read_file(self):
         """
-        Reads the content of the file line by line and stores it in file_contents.
+        Reads the contents of the file specified by self.file_path.
 
-        Opens the file in read and write mode ("r+t"), reads each line and appends it to the file_contents list.
+        Opens the file in read and write text mode ("r+t") and stores its lines in the `self.file_contents` attribute.
+
+        Raises:
+            FileNotFoundError: If the file does not exist.
+            IOError: If an I/O error occurs while reading the file.
         """
         try:
             with open(self.file_path, "r+t") as file:
