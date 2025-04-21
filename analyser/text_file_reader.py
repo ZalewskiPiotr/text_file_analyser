@@ -1,3 +1,5 @@
+from charset_normalizer import from_path
+
 class TextFileReader:
     """
         A simple utility class to read the contents of a text file.
@@ -29,7 +31,8 @@ class TextFileReader:
             IOError: If an I/O error occurs while reading the file.
         """
         try:
-            with open(self.file_path, "r+t") as file:
+            encoding = self._detect_encoding(self.file_path)
+            with open(self.file_path, "r+t", encoding=encoding) as file:
                 self.file_contents = file.readlines()
         except FileNotFoundError:
                 print(f"Error: File '{self.file_path}' not found.")
@@ -45,3 +48,24 @@ class TextFileReader:
             list: A list of lines read from the file.
         """
         return self.file_contents
+
+
+    @staticmethod
+    def _detect_encoding(file_path: str) -> str:
+        """
+        Detect the encoding of the given file
+
+        Args:
+            file_path (str): Path to the file to be read.
+
+        Returns:
+            str: The string indicating the type of encoding in a file
+
+        Raises:
+            ValueError: If the encoding could not be determined.
+        """
+        results = from_path(file_path)
+        best = results.best()
+        if best is None:
+            raise ValueError(f"Could not detect encoding for file: {file_path}")
+        return best.encoding
