@@ -1,4 +1,4 @@
-The environment is designed for a project with the title 'first_steps_after_long_break'
+The environment is designed for a project with the title 'text_file_analyser'
 ===============================================================
 This document consists history of installation of packages
 
@@ -38,3 +38,24 @@ Status of packages after installation:
 - pluggy     1.5.0
 - pytest     8.3.5
 - pytest-cov 6.1.1
+
+Installation on date 21.04.2025
+-------------------------------
+1. Installed 'charset-normalizer' using command: ``pip install charset-normalizer``
+
+    The package is used to detect the encoding of a file. The package is based on the MIT licence.
+
+----
+
+Status of packages after installation:
+::
+
+- charset-normalizer 3.4.1
+- colorama           0.4.6
+- coverage           7.8.0
+- iniconfig          2.1.0
+- packaging          24.2
+- pip                25.0.1
+- pluggy             1.5.0
+- pytest             8.3.5
+- pytest-cov         6.1.1
