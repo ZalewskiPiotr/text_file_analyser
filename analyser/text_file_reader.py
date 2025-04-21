@@ -37,7 +37,7 @@ class TextFileReader:
             print(f"Error reading file '{self.file_path}': {e}")
 
 
-    def get_file_content(self):
+    def get_file_content(self) -> list:
         """
         Returns the contents of the file.
 
