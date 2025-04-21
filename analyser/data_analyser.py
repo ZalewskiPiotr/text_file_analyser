@@ -15,7 +15,29 @@ class DataAnalyser:
         Args:
             data (list): A list of strings to be analyzed.
         """
-        self.data_to_analyse: list = DataAnalyser._clean_data(data)
+        self._data_to_analyse: list = self._clean_data(data)
+
+
+    @property
+    def data_to_analyse(self) -> list:
+        """
+        Getter for data_to_analyse
+
+        Returns:
+            list: A list of lines from the read file
+        """
+        return self._data_to_analyse
+
+
+    @data_to_analyse.setter
+    def data_to_analyse(self, new_data: list):
+        """
+        Setter for data_to_analyse
+
+        Args:
+             new_data (list): A list of strings to be analysed.
+        """
+        self._data_to_analyse = new_data
 
 
     @staticmethod
