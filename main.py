@@ -20,8 +20,10 @@ Example:
 
 from analyser import text_file_reader as txt_reader
 from analyser.data_analyser import DataAnalyser
+from analyser.logger import logger
 
 if __name__ == "__main__":
+    logger.info("********** Starting the programme **********")
     file_path = "data/the_last_ember.txt"
     file_reader: txt_reader.TextFileReader = txt_reader.TextFileReader(file_path)
     file_reader.read_file()
@@ -31,3 +33,4 @@ if __name__ == "__main__":
     print(f"Number of words in a text file: {analyser.amount_of_words()}")
     print(f"Number of characters in a text file: {analyser.amount_of_letters()}")
     print(f"The five most frequent words in a text file: {analyser.show_five_most_frequent_words()}")
+    logger.info("---------- Ending the programme ----------")
