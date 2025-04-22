@@ -1,10 +1,12 @@
 from charset_normalizer import from_path
+from analyser.logger import logger as global_logger
 
 class TextFileReader:
     """
         A simple utility class to read the contents of a text file.
 
         Attributes:
+            local_logger (analyser.logger): A file logger
             file_path (str): The path to the text file.
             file_contents (list): A list storing lines read from the file.
         """
@@ -16,6 +18,9 @@ class TextFileReader:
         Args:
             file_path (str): Path to the text file.
         """
+        self.local_logger = global_logger.getChild(self.__class__.__name__)
+        self.local_logger.info(f"Reading the file: {file_path}")
+
         self.file_path: str = file_path
         self.file_contents: list = []
 
@@ -32,12 +37,15 @@ class TextFileReader:
         """
         try:
             encoding = self._detect_encoding(self.file_path)
+            self.local_logger.info(f"Detected an encoding: {encoding}")
             with open(self.file_path, "r+t", encoding=encoding) as file:
                 self.file_contents = file.readlines()
         except FileNotFoundError:
                 print(f"Error: File '{self.file_path}' not found.")
+                self.local_logger.error(f"Error: File '{self.file_path}' not found.")
         except IOError as e:
             print(f"Error reading file '{self.file_path}': {e}")
+            self.local_logger.error(f"Error reading file '{self.file_path}': {e}")
 
 
     def get_file_content(self) -> list:

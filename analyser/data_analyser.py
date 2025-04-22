@@ -1,3 +1,5 @@
+from analyser.logger import logger as global_logger
+
 class DataAnalyser:
     """
     A class for analyzing text-based data from a list of strings.
@@ -6,15 +8,19 @@ class DataAnalyser:
 
     Attributes:
         data_to_analyse (list): A cleaned list of strings ready for analysis.
+        local_logger (analyser.logger): A file logger
     """
 
     def __init__(self, data: list):
         """
-        Initializes the DataAnalyser with raw data.
+        Initializes the DataAnalyser with raw data and the class logger.
 
         Args:
             data (list): A list of strings to be analyzed.
         """
+        self.local_logger = global_logger.getChild(self.__class__.__name__)
+        self.local_logger.info(f"Analysing the following text: {data}")
+
         self._data_to_analyse: list = self._clean_data(data)
 
 
