@@ -18,6 +18,8 @@ Example:
     $ python main.py
 """
 import argparse
+import configparser
+from configparser import ConfigParser
 
 from analyser import text_file_reader as txt_reader
 from analyser.data_analyser import DataAnalyser
@@ -57,6 +59,17 @@ def get_cli_parameters() -> tuple:
     return args.use_config_file, args.file_path
 
 
+def read_config_file() -> list:
+    config: ConfigParser = configparser.ConfigParser()
+    config.read('config.ini')
+    raw_data: str = config['paths']['files']
+    return_data = []
+    for line in raw_data.strip().splitlines():
+        return_data.append(line)
+
+    return return_data
+
+
 if __name__ == "__main__":
     logger.info("********** Starting the programme **********")
 
@@ -65,8 +78,10 @@ if __name__ == "__main__":
 
     files_paths = []
     if use_config_file:
-        print('Using config file is in progress')
-        # TODO: fill the files_paths from config file
+        msg: str = "The program uses file paths from the configuration file"
+        print(msg)
+        logger.info(msg)
+        files_paths = read_config_file()
     else:
         if cli_file_path is None:
             message: str = "Path is empty. I'm not able to read any file."
@@ -74,6 +89,9 @@ if __name__ == "__main__":
             print(f"WARNING!!!. {message}")
             exit()
         else:
+            msg: str = "The program uses file path from the CLI"
+            print(msg)
+            logger.info(msg)
             files_paths.append(cli_file_path)
 
     # Read the file
@@ -95,8 +113,8 @@ if __name__ == "__main__":
         print(f"The five most frequent words in a text file: {the_five}")
 
         # Save the history
-        history = history.History()
-        history.add_entry_to_history(number_of_lines = number_of_lines, number_of_words = number_of_letters,
+        history_obj = history.History()
+        history_obj.add_entry_to_history(number_of_lines = number_of_lines, number_of_words = number_of_letters,
                                      file_name = file_path)
 
     logger.info("---------- Ending the programme ----------")
